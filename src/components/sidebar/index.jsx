@@ -34,7 +34,11 @@ export default function Sidebar({ children }) {
           <SidebarLogoWrapper displaySidebar={displaySidebar}>
             <SidebarLogo href="#">
               <span className="app-brand-logo demo">
-                <img src={BrandLogo} alt="Brand logo" />
+                <img
+                  src={BrandLogo}
+                  alt="Brand logo"
+                  style={{ height: "35px" }}
+                />
               </span>
               <SidebarBrand
                 displaySidebar={displaySidebar}
