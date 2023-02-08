@@ -40,7 +40,7 @@ export default function Sidebar({ children }) {
                 displaySidebar={displaySidebar}
                 className="app__brand__text"
               >
-                Frest
+                Pabon
               </SidebarBrand>
             </SidebarLogo>
             <SidebarToggler
