@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { DynamicItem, Sidebar, dummyData } from "./components";
 import "./App.css";
+import { NavigationBar } from "./components/navbar/Navbar";
 
 function App() {
   return (
     <div id="main">
+      <NavigationBar />
       <Sidebar>
         <Routes>
           <Route path="/" element={<DynamicItem page="homepage" />} />
