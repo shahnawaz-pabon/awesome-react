@@ -1,25 +1,30 @@
 import React from "react";
 import { Nav, Navbar, Form, FormControl } from "react-bootstrap";
 import styled from "styled-components";
-import { Styles } from "./NavbarStyles";
-export const NavigationBar = () => (
-  <Styles>
-    <Navbar expand="lg">
-      <Navbar.Brand href="/">Tutorial</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Form className="form-center">
-        <FormControl type="text" placeholder="Search" className="" />
-      </Form>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Item>
-            <Nav.Link href="/">Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/about">About</Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  </Styles>
-);
+// import { Styles } from "./NavbarStyles";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
+
+export const NavigationBar = ({ showNav, setShowNav }) => {
+  const handleClick = () => {
+    setShowNav(!showNav);
+  };
+
+  return (
+    <header className={`header${showNav ? " body-pd" : ""}`}>
+      <div className="header_toggle">
+        {showNav ? (
+          <CloseRoundedIcon onClick={handleClick} />
+        ) : (
+          <WidgetsRoundedIcon onClick={handleClick} />
+        )}
+      </div>
+      <div className="header_img">
+        <img
+          src="https://avatars.githubusercontent.com/u/10698930?v=4"
+          alt="Pabon"
+        />
+      </div>
+    </header>
+  );
+};
