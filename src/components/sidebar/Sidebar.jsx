@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import {
 //   ItemsList,
 //   ItemContainer,
@@ -7,34 +7,38 @@ import { Link } from "react-router-dom";
 //   ItemName,
 // } from "./SidebarStyles";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 import { dummyData } from "..";
 
 const Sidebar = ({ displaySidebar, showNav }) => {
   const [activeItem, setActiveItem] = useState(0);
+  const location = useLocation();
 
   return (
     <div className={`l-navbar${showNav ? " show" : ""}`}>
       <nav className="nav">
         <div>
-          <a href="#" target="_blank" className="nav_logo">
-            {/* <i className="bi bi-alexa nav_logo-icon" />{" "} */}
+          <Link to="/" className="nav_logo" onClick={() => setActiveItem(0)}>
             <TwoWheelerIcon className="nav_logo-icon" />{" "}
             <span className="nav_logo-name">Pabon</span>
-          </a>
+          </Link>
+
           <div className="nav_list">
             {dummyData &&
               dummyData.map((itemData, index) => (
-                <a
+                <Link
                   key={index}
                   onClick={() => setActiveItem(itemData.id)}
-                  className="nav_link"
-                  href={itemData.path}
-                  // className={itemData.id === activeItem ? "active" : ""}
+                  className={
+                    itemData.id === activeItem ? "nav_link active" : "nav_link"
+                  }
+                  to={itemData.path}
                 >
                   {itemData.icon}
                   <span className="nav_name">{itemData.name}</span>
-                </a>
+                </Link>
               ))}
           </div>
         </div>
@@ -44,24 +48,6 @@ const Sidebar = ({ displaySidebar, showNav }) => {
         </a>
       </nav>
     </div>
-    // <ItemsList>
-    //   {dummyData.map((itemData, index) => (
-    //     <ItemContainer
-    //       key={index}
-    //       onClick={() => setActiveItem(itemData.id)}
-    //       className={itemData.id === activeItem ? "active" : ""}
-    //     >
-    //       <Link to={itemData.path}>
-    //         <ItemWrapper>
-    //           {itemData.icon}
-    //           <ItemName displaySidebar={displaySidebar}>
-    //             {itemData.name}
-    //           </ItemName>
-    //         </ItemWrapper>
-    //       </Link>
-    //     </ItemContainer>
-    //   ))}
-    // </ItemsList>
   );
 };
 
